@@ -231,6 +231,10 @@ public class FileManager {
         } catch (NoSuchElementException e) {
             LOGGER.error("File was not found: " + fileName + " in " + dir);
         }
+        catch (IllegalArgumentException e) {
+            LOGGER.error("Directory not found: {}", dir);
+        }
+
         return null;
     }
 
