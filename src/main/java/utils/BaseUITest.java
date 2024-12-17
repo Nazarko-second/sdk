@@ -142,13 +142,13 @@ public class BaseUITest extends BaseTest {
         try {
             DriverProvider.closeDriver();
         } catch (Exception e) {
-            System.out.println("Closing failed " + e);
+            logger.error("Closing failed " + e);
         }
         try {
             BasePageComponent.driver().close();
             BasePageComponent.driver().quit();
         } catch (Exception e) {
-            System.out.println("Driver already closed " + e);
+            logger.info("Driver already closed " + e);
         }
 
     }
