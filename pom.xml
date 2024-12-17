@@ -32,8 +32,8 @@
 <!--                <version>2.19.1</version>-->
                 <configuration>
 <!--                    <argLine>-javaagent:"${com.browserstack:browserstack-java-sdk:jar}"</argLine>-->
-                    <argLine>-javaagent:browserstack-java-sdk-1.29.0.jar</argLine>
-<!--                    <argLine>-javaagent:"/var/jenkins_home/.m2/repository/com/browserstack/browserstack-java-sdk/1.28.0/browserstack-java-sdk-1.28.0.jar"</argLine>-->
+<!--                    <argLine>-javaagent:browserstack-java-sdk-1.29.0.jar</argLine>-->
+                    <argLine>-javaagent:"/var/jenkins_home/.m2/repository/com/browserstack/browserstack-java-sdk/1.28.0/browserstack-java-sdk-1.28.0.jar"</argLine>
 <!--                    <argLine>-javaagent:"C:\Users\Admin\.m2\repository\com\browserstack\browserstack-java-sdk\1.27.4\browserstack-java-sdk-1.27.4.jar"</argLine>-->
 
                     <includes>
