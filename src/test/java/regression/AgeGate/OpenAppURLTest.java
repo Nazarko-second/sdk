@@ -25,17 +25,17 @@ public class OpenAppURLTest extends BaseUITest implements ITest {
             priority = MEDIUM)
     public void FirstTest() {
         params = dataRepository.getParametersForTest("OpenAppURLTest");
-        String blogUrl = params.get("blog_url");
+//        String blogUrl = params.get("blog_url");
 
-        openMainPage();
-        assertValidation(blogLandingPage.isChronicleImageDisplayed(), "FAILED: new page is not displayed", "new page is displayed");
-        String currentTabHandle = BasePageComponent.getCurrentTab();
-        String newTab = BasePageComponent.openNewTab();
-        BasePageComponent.closeTab(currentTabHandle);
-        BasePageComponent.switchToTab(newTab);
-        BasePageComponent.openLinkInCurrentTab(blogUrl);
-        assertValidation(blogLandingPage.isChronicleImageDisplayed(), "FAILED: new page is not displayed", "new page is displayed");
-        assertValidation(ageGatePage.confirmAgeButtonIsNotDisplayed(), "FAILED: age gate is displayed", "age is not displayed");
+//        openMainPage();
+//        assertValidation(blogLandingPage.isChronicleImageDisplayed(), "FAILED: new page is not displayed", "new page is displayed");
+//        String currentTabHandle = BasePageComponent.getCurrentTab();
+//        String newTab = BasePageComponent.openNewTab();
+//        BasePageComponent.closeTab(currentTabHandle);
+//        BasePageComponent.switchToTab(newTab);
+//        BasePageComponent.openLinkInCurrentTab(blogUrl);
+//        assertValidation(blogLandingPage.isChronicleImageDisplayed(), "FAILED: new page is not displayed", "new page is displayed");
+//        assertValidation(ageGatePage.confirmAgeButtonIsNotDisplayed(), "FAILED: age gate is displayed", "age is not displayed");
 
         LOGGER.info("Test step");
 

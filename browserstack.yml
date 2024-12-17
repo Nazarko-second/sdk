@@ -30,7 +30,7 @@ framework: testng
 # use session name from DriverProvider and mark tests at BS as FAIL/PASS manually
 testContextOptions:
   skipSessionName: true
-  skipSessionStatus: true
+  skipSessionStatus: false
 
 # =======================================
 # Platforms (Browsers / Devices to test)
