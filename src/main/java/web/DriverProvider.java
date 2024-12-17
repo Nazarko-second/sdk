@@ -502,7 +502,7 @@ public class DriverProvider {
 
             try {
                 bsLocal.start(bsLocalArgs);
-                System.out.println(bsLocal.isRunning());
+                LOGGER.info(String.valueOf(bsLocal.isRunning()));
             } catch (Exception e) {
                 e.printStackTrace();
             }

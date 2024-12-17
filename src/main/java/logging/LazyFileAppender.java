@@ -29,7 +29,7 @@ public class LazyFileAppender<E> extends FileAppender<E> {
     @Override
     protected void append(E eventObject) {
         byte[] byteArray = this.encoder.encode(eventObject);
-        System.out.print(new String(byteArray, StandardCharsets.UTF_8));
+//        System.out.print(new String(byteArray, StandardCharsets.UTF_8));
         super.append(eventObject);
     }
 }

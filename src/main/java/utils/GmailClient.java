@@ -50,7 +50,7 @@ public class GmailClient {
 
     private static final int TIMEOUT_BETWEEN_ATTEMPTS = 5000;
     public static final String MAIL_ADDRESSES_SEPARATOR = ";";
-    public Logger LOGGER = LoggerFactory.getLogger(GmailClient.class);
+    private static Logger LOGGER = LoggerFactory.getLogger(GmailClient.class);
 
     private static final String APPLICATION_NAME = "Verilife Automation";
     private static final JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
@@ -227,8 +227,8 @@ public class GmailClient {
         Message message = createMessageWithEmail(emailContent);
         message = service.users().messages().send(userId, message).execute();
 
-        System.out.println("Message id: " + message.getId());
-        System.out.println(message.toPrettyString());
+        LOGGER.info("Message id: " + message.getId());
+        LOGGER.info(message.toPrettyString());
         return message;
     }
 
