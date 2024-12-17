@@ -103,16 +103,16 @@ public class BaseUITest extends BaseTest {
                 if (!testResult.isSuccess())
 //                    status = ReporterManager.report().getTest().getLogList().stream().filter(l -> l.getLogStatus().equals(LogStatus.FAIL)).findFirst().get().getDetails().replaceAll("<.+?>", "");
                     status = ReporterManager.getFailError();
-                try {
-                    getBSVideoUrl(testName.get());
-                } catch (Exception e) {
-                    logger.info("Failed to fetch video url from Browserstack");
-                }
-                try {
-                    markBSTest(testResult.isSuccess(), sessionID, status);
-                } catch (Exception e) {
-                    logger.info("Failed to mark tests at Browserstack");
-                }
+//                try {
+//                    getBSVideoUrl(testName.get());
+//                } catch (Exception e) {
+//                    logger.info("Failed to fetch video url from Browserstack");
+//                }
+//                try {
+//                    markBSTest(testResult.isSuccess(), sessionID, status);
+//                } catch (Exception e) {
+//                    logger.info("Failed to mark tests at Browserstack");
+//                }
             }
 
             // possibly should be done after closing driver??
