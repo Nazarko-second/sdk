@@ -1,0 +1,39 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Verilife Desktop Regression') {
+            steps {
+                catchError {
+                    bat 'mvn install -Dconfig=test_illinois_desktop_chrome_bs -Dgroups=smoke,sanity,criticalPath,regression -DexcludedGroups=mobileOnly -DqTest=true "-Dos=Windows" -Dbrowser=Chrome -DbuildUrl=%BUILD_URL% -DfullDataProviderDetails=false'
+                }
+            }
+        }
+        stage('Verilife Mobile Regression') {
+            steps {
+                catchError {
+                    bat 'mvn install -Dconfig=test_illinois_android_chrome_bs -Dgroups=smoke,sanity,criticalPath,regression -DexcludedGroups=desktopOnly -DqTest=true "-Dos=Windows" -Dbrowser=Chrome -DbuildUrl=%BUILD_URL% -DfullDataProviderDetails=false'
+                }
+            }
+                }
+        stage('LivWell Desktop Regression') {
+            steps {
+                catchError { // propagate: false - pipeline will first execute this step, and continue to the next step even if this step failed. Maybe can be used in a following command instead of "catchError" block
+                    build job: "2 Livwell automation", parameters: [[$class: 'StringParameterValue', name: 'suite', value: 'regression']]//, wait: true - is present by default. Wait for build step to finish before jumping to next step
+                }
+            }
+        }
+        stage('Verilife PWA Regression') {
+            steps {
+                catchError {
+                    build job: "5. Verilife PWA", parameters: [
+                    [$class: 'StringParameterValue', name: 'environment', value: 'staging'],
+                    [$class: 'StringParameterValue', name: 'groups', value: 'smoke,sanity,criticalPath,regression'],
+                    [$class: 'StringParameterValue', name: 'excludedGroups', value: ''],
+                    [$class: 'StringParameterValue', name: 'sendResultsToQTest', value: 'true']]
+                }
+            }
+        }
+    }
+}
+// fdba9a85-1c85-40c5-93ec-6238eca2c80e

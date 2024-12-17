@@ -1,0 +1,17 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="RegressionSuite" parallel="methods" thread-count="1">
+    <test name="RegressionStaging">
+        <groups>
+            <run>
+                <include name="regression"/>
+                <include name="criticalPath"/>
+                <include name="sanity"/>
+                <include name="smoke"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="regression.AgeGate.OpenAppURLTest" />
+        </classes>
+    </test> <!-- test -->
+</suite> <!-- suite -->

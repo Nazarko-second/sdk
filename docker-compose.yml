@@ -1,0 +1,15 @@
+services:
+    jenkins_ci:
+        image: jenkins_image
+        volumes:
+            - '/c/Users/Admin/Documents/Pharmacann/docker/jenkins:/var/jenkins_home'
+        environment:
+            - TZ=America/Chicago
+            - BROWSERSTACK_KEY
+            - BROWSERSTACK_USER
+            - MAILINATOR_KEY
+            - Q_TEST_KEY
+        ports:
+            - '50000:50000'
+            - '8080:8080'
+        container_name: jenkins
