@@ -22,16 +22,16 @@ public class EmailHelper {
      * @param email email address
      * @return url ro reset password
      */
-    public String getResetPasswordUrlFromEmail(String email) {
-        reporter.info("Getting reset password URL from email");
-        switch (emailClient) {
-            case "gmail":
-                return new GmailHelper().getResetPasswordUrlFromEmail(email);
-            case "mailinator":
-                return new MailinatorHelper().getResetPasswordUrlFromEmail(email);
-        }
-        return "";
-    }
+//    public String getResetPasswordUrlFromEmail(String email) {
+//        reporter.info("Getting reset password URL from email");
+//        switch (emailClient) {
+//            case "gmail":
+//                return new GmailHelper().getResetPasswordUrlFromEmail(email);
+//            case "mailinator":
+//                return new MailinatorHelper().getResetPasswordUrlFromEmail(email);
+//        }
+//        return "";
+//    }
 
     /**
      * Delete all Reset password emails in the inbox
@@ -79,39 +79,39 @@ public class EmailHelper {
     }
 
 
-    public boolean isConfirmOrderEmailReceived(String store, String orderConfirmationEmail) {
-        // TODO move reading from config to Mailinator/Gmail Helper class
-//        String orderConfirmationEmail = SetupConfiguration.MAILINATOR_ORDER_EMAIL;
-        String from = SetupConfiguration.MAILINATOR_ORDER_CONFIRMATION_SENDER;
-        String expectedSubject = String.format(SetupConfiguration.ORDER_CONFIRMATION_SUBJECT, store);
-//        String expectedSubject = String.format(ProjectConfiguration.getConfigProperty("order_confirmation_email_subject"), store);
-        reporter.info("Checking if order confirmation email has arrived.");
-        switch (emailClient) {
-            case "mailinator":
-                MailinatorHelper mailinator = new MailinatorHelper();
-                String msgBody = mailinator.getMessageBody(expectedSubject, from, orderConfirmationEmail);
-                return msgBody.length() > 0;
-            case "gmail":
-                return new GmailHelper().isConfirmOrderEmailReceived(orderConfirmationEmail, store);
-        }
-        LOGGER.info("Email client name has not been found");
-        return false;
-    }
+//    public boolean isConfirmOrderEmailReceived(String store, String orderConfirmationEmail) {
+//        // TODO move reading from config to Mailinator/Gmail Helper class
+////        String orderConfirmationEmail = SetupConfiguration.MAILINATOR_ORDER_EMAIL;
+//        String from = SetupConfiguration.MAILINATOR_ORDER_CONFIRMATION_SENDER;
+//        String expectedSubject = String.format(SetupConfiguration.ORDER_CONFIRMATION_SUBJECT, store);
+////        String expectedSubject = String.format(ProjectConfiguration.getConfigProperty("order_confirmation_email_subject"), store);
+//        reporter.info("Checking if order confirmation email has arrived.");
+//        switch (emailClient) {
+//            case "mailinator":
+//                MailinatorHelper mailinator = new MailinatorHelper();
+//                String msgBody = mailinator.getMessageBody(expectedSubject, from, orderConfirmationEmail);
+//                return msgBody.length() > 0;
+//            case "gmail":
+//                return new GmailHelper().isConfirmOrderEmailReceived(orderConfirmationEmail, store);
+//        }
+//        LOGGER.info("Email client name has not been found");
+//        return false;
+//    }
 
-    public String getWelcomeEmail(HashMap<String, String> userData) {
-        String welcomeEmail = userData.get("randomEmail");
-//        String store = trimTypeFromStoreName(userData.get("store"));
-        String store = userData.get("store");
-
-        switch (emailClient) {
-            case "mailinator":
-                return new MailinatorHelper().getWelcomeEmail(welcomeEmail, store);
-            case "gmail":
-                // TODO if needed
-        }
-        LOGGER.info("Email client name has not been found");
-        return "";
-    }
+//    public String getWelcomeEmail(HashMap<String, String> userData) {
+//        String welcomeEmail = userData.get("randomEmail");
+////        String store = trimTypeFromStoreName(userData.get("store"));
+//        String store = userData.get("store");
+//
+//        switch (emailClient) {
+//            case "mailinator":
+//                return new MailinatorHelper().getWelcomeEmail(welcomeEmail, store);
+//            case "gmail":
+//                // TODO if needed
+//        }
+//        LOGGER.info("Email client name has not been found");
+//        return "";
+//    }
 
 
     public String getResetPasswordEmail(String email) {
@@ -134,20 +134,20 @@ public class EmailHelper {
     }
 
 
-    public boolean isPasswordUpdatedEmailReceived() {
-        LOGGER.info("Trying to get Updated Password email");
-//        String expectedSubject = ProjectConfiguration.getConfigProperty("password_update_subject");
-        switch (emailClient) {
-            case "mailinator":
-                LOGGER.info("Using Mailinator");
-                return new MailinatorHelper().isPasswordUpdatedEmailReceived();
-            case "gmail":
-                LOGGER.info("Using Gmail");
-                // TODO if needed
-        }
-        LOGGER.info("Password update email has not been found");
-        return false;
-    }
+//    public boolean isPasswordUpdatedEmailReceived() {
+//        LOGGER.info("Trying to get Updated Password email");
+////        String expectedSubject = ProjectConfiguration.getConfigProperty("password_update_subject");
+//        switch (emailClient) {
+//            case "mailinator":
+//                LOGGER.info("Using Mailinator");
+//                return new MailinatorHelper().isPasswordUpdatedEmailReceived();
+//            case "gmail":
+//                LOGGER.info("Using Gmail");
+//                // TODO if needed
+//        }
+//        LOGGER.info("Password update email has not been found");
+//        return false;
+//    }
 
 
     private String trimTypeFromStoreName(String storeFull) {

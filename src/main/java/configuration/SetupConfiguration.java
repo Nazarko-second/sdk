@@ -26,19 +26,19 @@ public class SetupConfiguration {
     public static final boolean IS_ANDROID = ProjectConfiguration.getConfigProperty("Driver").toLowerCase().contains("android");
     public static final boolean IS_IOS = ProjectConfiguration.getConfigProperty("Driver").toLowerCase().contains("ios");
     public static final String SELENOID_URL = ProjectConfiguration.getConfigProperty("SelenoidUrl");
-    public static final String ORDER_CONFIRMATION_SUBJECT = dataRepository.getParametersForTest("EmailTest").get("order_confirmation_email_subject");
-    public static final String MAILINATOR_ORDER_CONFIRMATION_SENDER = dataRepository.getParametersForTest("EmailTest").get("mailinator_order_confirmation_sender");
+//    public static final String ORDER_CONFIRMATION_SUBJECT = dataRepository.getParametersForTest("EmailTest").get("order_confirmation_email_subject");
+//    public static final String MAILINATOR_ORDER_CONFIRMATION_SENDER = dataRepository.getParametersForTest("EmailTest").get("mailinator_order_confirmation_sender");
 
-    public static final String MAILINATOR_WELCOME_SENDER = dataRepository.getParametersForTest("EmailTest").get("mailinator_welcome_sender");
-    public static final String WELCOME_EMAIL_SUBJECT = dataRepository.getParametersForTest("EmailTest").get("welcome_email_subject");
+//    public static final String MAILINATOR_WELCOME_SENDER = dataRepository.getParametersForTest("EmailTest").get("mailinator_welcome_sender");
+//    public static final String WELCOME_EMAIL_SUBJECT = dataRepository.getParametersForTest("EmailTest").get("welcome_email_subject");
 
-    public static final String MAILINATOR_RESET_PWD_SENDER = dataRepository.getParametersForTest("EmailTest").get("mailinator_reset_password_sender");
-    public static final String RESET_PWD_EMAIL_SUBJECT = dataRepository.getParametersForTest("EmailTest").get("reset_password_subject");
+//    public static final String MAILINATOR_RESET_PWD_SENDER = dataRepository.getParametersForTest("EmailTest").get("mailinator_reset_password_sender");
+//    public static final String RESET_PWD_EMAIL_SUBJECT = dataRepository.getParametersForTest("EmailTest").get("reset_password_subject");
 
 
-    public static final String MAILINATOR_UPDATE_PWD_SENDER = dataRepository.getParametersForTest("EmailTest").get("mailinator_password_update_sender");
-    public static final String UPDATE_PWD_EMAIL_SUBJECT = dataRepository.getParametersForTest("EmailTest").get("password_update_subject");
-    public static final String UPDATE_PWD_RECEIVER = dataRepository.getParametersForTest("EmailTest").get("mailinator_password_update_receiver");
+//    public static final String MAILINATOR_UPDATE_PWD_SENDER = dataRepository.getParametersForTest("EmailTest").get("mailinator_password_update_sender");
+//    public static final String UPDATE_PWD_EMAIL_SUBJECT = dataRepository.getParametersForTest("EmailTest").get("password_update_subject");
+//    public static final String UPDATE_PWD_RECEIVER = dataRepository.getParametersForTest("EmailTest").get("mailinator_password_update_receiver");
     public static final boolean FULL_DATA_PROVIDER_DETAILS = Objects.equals(System.getProperty("fullDataProviderDetails"), "true");
     public static final boolean Q_TEST_INTEGRATION = getQTestIntegration();
 

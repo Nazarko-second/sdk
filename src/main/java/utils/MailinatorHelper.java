@@ -37,35 +37,35 @@ public class MailinatorHelper {
         LOGGER.info("Deleted {} reset password emails", count);
     }
 
-    public String getResetPasswordUrlFromEmail(String receiver) {
-        LOGGER.info("Trying to get Reset password link from email");
-        String sender = SetupConfiguration.MAILINATOR_RESET_PWD_SENDER;
-        String resetSubject = SetupConfiguration.RESET_PWD_EMAIL_SUBJECT;
-        String resetUrlRegex = DataRepository.Instance.getParametersForTest("EmailTest").get("resetUrlRegex");
+//    public String getResetPasswordUrlFromEmail(String receiver) {
+//        LOGGER.info("Trying to get Reset password link from email");
+//        String sender = SetupConfiguration.MAILINATOR_RESET_PWD_SENDER;
+//        String resetSubject = SetupConfiguration.RESET_PWD_EMAIL_SUBJECT;
+//        String resetUrlRegex = DataRepository.Instance.getParametersForTest("EmailTest").get("resetUrlRegex");
+//
+//        String messageBody = getMessageBody(resetSubject, sender, receiver);
+//        if (messageBody.isEmpty()) {
+//            LOGGER.info("Reset password email was not received");
+//        }
+//        return messageBody.replaceAll(resetUrlRegex, "$1").replace("amp;", "");
+//    }
 
-        String messageBody = getMessageBody(resetSubject, sender, receiver);
-        if (messageBody.isEmpty()) {
-            LOGGER.info("Reset password email was not received");
-        }
-        return messageBody.replaceAll(resetUrlRegex, "$1").replace("amp;", "");
-    }
-
-    public boolean isPasswordUpdatedEmailReceived() {
-        LOGGER.info("Checking if update password email was received");
-        String sender = SetupConfiguration.MAILINATOR_UPDATE_PWD_SENDER;
-        String receiver = SetupConfiguration.UPDATE_PWD_RECEIVER;
-        String subject = SetupConfiguration.UPDATE_PWD_EMAIL_SUBJECT;
-
-        String msgBody = getMessageBody(subject, sender, receiver);
-
-        boolean result = msgBody.contains("Your password has been updated");
-        if (result) {
-            LOGGER.info("Password update email has been received");
-        } else {
-            LOGGER.info("Password update email has NOT been received");
-        }
-        return result;
-    }
+//    public boolean isPasswordUpdatedEmailReceived() {
+//        LOGGER.info("Checking if update password email was received");
+//        String sender = SetupConfiguration.MAILINATOR_UPDATE_PWD_SENDER;
+//        String receiver = SetupConfiguration.UPDATE_PWD_RECEIVER;
+//        String subject = SetupConfiguration.UPDATE_PWD_EMAIL_SUBJECT;
+//
+//        String msgBody = getMessageBody(subject, sender, receiver);
+//
+//        boolean result = msgBody.contains("Your password has been updated");
+//        if (result) {
+//            LOGGER.info("Password update email has been received");
+//        } else {
+//            LOGGER.info("Password update email has NOT been received");
+//        }
+//        return result;
+//    }
 
 
     public String getMessageBody(String emailSubject, String expectedSender, String orderEmailAddress) {
@@ -107,14 +107,14 @@ public class MailinatorHelper {
         return mailinator.getMessageById(messageId, orderEmailAddress);
     }
 
-    public String getWelcomeEmail(String email, String store) {
-        LOGGER.info(String.format("Getting welcome email for %s in %s", email, store));
-        String from = SetupConfiguration.MAILINATOR_WELCOME_SENDER;
-        String subjectBase = SetupConfiguration.WELCOME_EMAIL_SUBJECT;
-
-        String expectedSubject = String.format("%s %s", subjectBase, store);
-
-        return getMessageBody(expectedSubject, from, email);
-    }
+//    public String getWelcomeEmail(String email, String store) {
+//        LOGGER.info(String.format("Getting welcome email for %s in %s", email, store));
+//        String from = SetupConfiguration.MAILINATOR_WELCOME_SENDER;
+//        String subjectBase = SetupConfiguration.WELCOME_EMAIL_SUBJECT;
+//
+//        String expectedSubject = String.format("%s %s", subjectBase, store);
+//
+//        return getMessageBody(expectedSubject, from, email);
+//    }
 
 }
