@@ -3,7 +3,6 @@ package utils;
 import components.BasePageComponent;
 
 import components.web.*;
-import components.web.instoreTablet.*;
 import configuration.ProjectConfiguration;
 import configuration.SetupConfiguration;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -68,15 +67,6 @@ public class BaseUITest extends BaseTest {
 //    public static MarijuanaRegulationsPage marijuanaRegulationsPage = new MarijuanaRegulationsPage();
 //    public static DisclaimersPage disclaimersPage = new DisclaimersPage();
 //    public static EcommercePrivacyPracticesPage ecommercePrivacyPracticesPage = new EcommercePrivacyPracticesPage();
-
-
-    // Instore tablet
-    public static IST_ConfigPage istConfigPage = new IST_ConfigPage();
-    public static IST_HeaderComponent istHeaderComponent = new IST_HeaderComponent();
-    public static IST_PLP istPlp = new IST_PLP();
-    public static IST_Bag istBag = new IST_Bag();
-    public static IST_CheckoutPage istCheckoutPage = new IST_CheckoutPage();
-    public static IST_OrderCreatedPage istOrderCreatedPage = new IST_OrderCreatedPage();
 
 
     @BeforeMethod(alwaysRun = true)
