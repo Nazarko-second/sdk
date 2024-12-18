@@ -25,7 +25,7 @@ public class OpenAppURLTest extends BaseUITest implements ITest {
             priority = MEDIUM)
     public void FirstTest() {
         params = dataRepository.getParametersForTest("OpenAppURLTest");
-//        String blogUrl = params.get("blog_url");
+        String blogUrl = params.get("blog_url");
 
 //        openMainPage();
 //        assertValidation(blogLandingPage.isChronicleImageDisplayed(), "FAILED: new page is not displayed", "new page is displayed");
