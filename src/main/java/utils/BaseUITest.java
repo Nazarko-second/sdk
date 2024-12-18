@@ -28,12 +28,12 @@ public class BaseUITest extends BaseTest {
     public static final boolean IS_NATIVE_DEVICE = SetupConfiguration.IS_NATIVE_DEVICE;
     public static final boolean IS_MOBILE = SetupConfiguration.IS_MOBILE;
     public static AgeGatePage ageGatePage = AgeGatePage.getInstance();
-//    public static HeaderComponent headerComponent = HeaderComponent.getInstance();
+    //    public static HeaderComponent headerComponent = HeaderComponent.getInstance();
 //    public static SearchComponent search = SearchComponent.getInstance();
 //    public static PLP plp = PLP.getInstance();
 //    public static PDP pdp = PDP.getInstance();
     public static HomePage homePage = HomePage.getInstance();
-//    public static LearnMegaMenuComponent learnMegaMenuComponent = LearnMegaMenuComponent.getInstance();
+    //    public static LearnMegaMenuComponent learnMegaMenuComponent = LearnMegaMenuComponent.getInstance();
 //    public static ShopMegaMenuComponent shopMegaMenu = ShopMegaMenuComponent.getInstance();
 //    public static ContactUsPage contactUsPage = ContactUsPage.getInstance();
 //    public static FooterComponent footerComponent = FooterComponent.getInstance();
@@ -113,6 +113,16 @@ public class BaseUITest extends BaseTest {
                 } catch (Exception e) {
                     logger.info("Failed to mark tests at Browserstack");
                 }
+//                try {
+//                    getBSVideoUrl(testName.get());
+//                } catch (Exception e) {
+//                    logger.info("Failed to fetch video url from Browserstack");
+//                }
+//                try {
+//                    markBSTest(testResult.isSuccess(), sessionID, status);
+//                } catch (Exception e) {
+//                    logger.info("Failed to mark tests at Browserstack");
+//                }
             }
 
             // possibly should be done after closing driver??
