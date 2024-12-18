@@ -29,11 +29,11 @@ public class FileManager {
     // main logger
     private static final Logger LOGGER = LoggerFactory.getLogger(FileManager.class);
 
-    static String MAIN_RESOURCES = "src/main/resources/";
-    static String TEST_SCRIPTS = "src/test/automation/scripts/";
-    public static String TEST_ACTIONS = "src/test/automation/actions/";
-    static String TEST_SUITES = "src/test/automation/suites/";
-    public static String TEST_AUTOMATION_RESOURCES = "src/test/automation/resources/";
+//    static String MAIN_RESOURCES = "src/main/resources/";
+//    static String TEST_SCRIPTS = "src/test/automation/scripts/";
+//    public static String TEST_ACTIONS = "src/test/automation/actions/";
+//    static String TEST_SUITES = "src/test/automation/suites/";
+//    public static String TEST_AUTOMATION_RESOURCES = "src/test/automation/resources/";
 
     //folder in .target with downloaded/created during session files)
     public static String OUTPUT_DIR = getOutputDir();
@@ -44,8 +44,8 @@ public class FileManager {
      * @return test output dir
      */
     public static String getOutputDir() {
-        String callingMethod = new Throwable().getStackTrace()[2].getMethodName();
-        LOGGER.info("getOutputDir() was called by: " + callingMethod);
+//        String callingMethod = new Throwable().getStackTrace()[2].getMethodName();
+//        LOGGER.info("getOutputDir() was called by: " + callingMethod);
         String directory = System.getProperty("user.dir") + File.separator + "target" + File.separator + (ProjectConfiguration.isPropertySet("Jenkins") ? "report" : SessionManager.getSessionID());
         System.setProperty("OUTPUT_DIR", directory);
         //create output dir
@@ -101,40 +101,40 @@ public class FileManager {
     }
 
 
-    /**
-     * Wait for file existance
-     * @param actualFileLocation path to file
-     * @return was file found
-     */
-    public static boolean waitForFile(String actualFileLocation) {
-        boolean result = false;
-        boolean timeoutReached = false;
-        int currentTime = 0;
-        while (!timeoutReached) {
-            if (Files.exists(Paths.get(actualFileLocation))) {
-                return true;
-            }
-            currentTime++;
-            try {
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                //
-            }
-            if (currentTime >= Integer.parseInt(ProjectConfiguration.getConfigProperty("DefaultTimeoutInSeconds")))
-                timeoutReached = true;
-        }
-        return result;
-    }
+//    /**
+//     * Wait for file existance
+//     * @param actualFileLocation path to file
+//     * @return was file found
+//     */
+//    public static boolean waitForFile(String actualFileLocation) {
+//        boolean result = false;
+//        boolean timeoutReached = false;
+//        int currentTime = 0;
+//        while (!timeoutReached) {
+//            if (Files.exists(Paths.get(actualFileLocation))) {
+//                return true;
+//            }
+//            currentTime++;
+//            try {
+//                Thread.sleep(2000);
+//            } catch (InterruptedException e) {
+//                //
+//            }
+//            if (currentTime >= Integer.parseInt(ProjectConfiguration.getConfigProperty("DefaultTimeoutInSeconds")))
+//                timeoutReached = true;
+//        }
+//        return result;
+//    }
 
-    /**
-     * wait for downloaded file
-     *
-     * @param filePath file path
-     * @return was file downloaded
-     */
-    public static boolean waitForDownloadedFile(String filePath) {
-        return waitForFile(filePath);
-    }
+//    /**
+//     * wait for downloaded file
+//     *
+//     * @param filePath file path
+//     * @return was file downloaded
+//     */
+//    public static boolean waitForDownloadedFile(String filePath) {
+//        return waitForFile(filePath);
+//    }
 
     /**
      * Archive files to ZIP
@@ -200,16 +200,16 @@ public class FileManager {
         fis.close();
     }
 
-    /**
-     * Append to file
-     *
-     * @param fileName file location
-     * @param data     data to add
-     * @throws IOException exception
-     */
-    public static void appendToFile(String fileName, String data) throws IOException {
-        FileUtils.writeStringToFile(new File(fileName), data, true);
-    }
+//    /**
+//     * Append to file
+//     *
+//     * @param fileName file location
+//     * @param data     data to add
+//     * @throws IOException exception
+//     */
+//    public static void appendToFile(String fileName, String data) throws IOException {
+//        FileUtils.writeStringToFile(new File(fileName), data, true);
+//    }
 
     /**
      * Get files from dir
@@ -238,25 +238,25 @@ public class FileManager {
         return null;
     }
 
-    /**
-     * Check if file exists
-     *
-     * @param file file location
-     * @return does file exist
-     */
-    public static boolean doesExist(String file) {
-        return (new File(file)).exists();
-    }
-
-    /**
-     * Delete file
-     *
-     * @param file file location
-     * @return was file deleted
-     */
-    public static boolean deleteFile(String file) {
-        return (new File(file)).delete();
-    }
+//    /**
+//     * Check if file exists
+//     *
+//     * @param file file location
+//     * @return does file exist
+//     */
+//    public static boolean doesExist(String file) {
+//        return (new File(file)).exists();
+//    }
+//
+//    /**
+//     * Delete file
+//     *
+//     * @param file file location
+//     * @return was file deleted
+//     */
+//    public static boolean deleteFile(String file) {
+//        return (new File(file)).delete();
+//    }
 
     /**
      * Replace String in specified file

@@ -102,23 +102,23 @@ public class ReporterManager {
         return testThread;
     }
 
-    /**
-     * Assign selected tags to test
-     *
-     * @param test Extend test
-     * @param tags array of tags
-     */
-    private void assignTagsForTest(ExtentTest test, String[] tags) {
-        if (tags != null) {
-            String expectedTags = ProjectConfiguration.getConfigProperty("tags");
-            if (expectedTags != null)
-                for (String tag : tags) {
-                    for (String expectedTag : expectedTags.toLowerCase().split(","))
-                        if (expectedTag.equals(tag))
-                            test.assignCategory(tag);
-                }
-        }
-    }
+//    /**
+//     * Assign selected tags to test
+//     *
+//     * @param test Extend test
+//     * @param tags array of tags
+//     */
+//    private void assignTagsForTest(ExtentTest test, String[] tags) {
+//        if (tags != null) {
+//            String expectedTags = ProjectConfiguration.getConfigProperty("tags");
+//            if (expectedTags != null)
+//                for (String tag : tags) {
+//                    for (String expectedTag : expectedTags.toLowerCase().split(","))
+//                        if (expectedTag.equals(tag))
+//                            test.assignCategory(tag);
+//                }
+//        }
+//    }
 
     /**
      * get current report (ExtendTest object)
@@ -341,12 +341,12 @@ public class ReporterManager {
         logger.info("Started test '" + m.getName() + "'");
     }
 
-    /**
-     * stop reporting
-     */
-    public void stopReporting() {
-        closeTest();
-    }
+//    /**
+//     * stop reporting
+//     */
+//    public void stopReporting() {
+//        closeTest();
+//    }
 
     /**
      * stop reporting with result
@@ -494,82 +494,82 @@ public class ReporterManager {
         report().log(LogStatus.PASS, message);
     }
 
-    /**
-     * Attach screenshot to the report
-     *
-     * @param details
-     */
-    public void attachScreenshotToReport(String details) {
-        String message = "<pre>" + details + "</pre>";
+//    /**
+//     * Attach screenshot to the report
+//     *
+//     * @param details
+//     */
+//    public void attachScreenshotToReport(String details) {
+//        String message = "<pre>" + details + "</pre>";
+//
+//        String screenshotFile;
+//        try {
+//            if (DriverProvider.isDriverActive()) {
+//                screenshotFile = takeScreenshot(DriverProvider.getCurrentDriver(), true);
+//                message = message + "<br><img style=\"max-width: 100%;height: auto;max-height: 100%;width: auto;\" src=\"" + IMAGES_SUBFOLDER + File.separator + screenshotFile + "\"></img><br>";
+//
+//            }
+//        } catch (Exception e) {
+//            logger.warn("Error getting the screenshot!");
+//        }
+//
+//        logger.info(details);
+//        report().log(LogStatus.INFO, message);
+//    }
 
-        String screenshotFile;
-        try {
-            if (DriverProvider.isDriverActive()) {
-                screenshotFile = takeScreenshot(DriverProvider.getCurrentDriver(), true);
-                message = message + "<br><img style=\"max-width: 100%;height: auto;max-height: 100%;width: auto;\" src=\"" + IMAGES_SUBFOLDER + File.separator + screenshotFile + "\"></img><br>";
-
-            }
-        } catch (Exception e) {
-            logger.warn("Error getting the screenshot!");
-        }
-
-        logger.info(details);
-        report().log(LogStatus.INFO, message);
-    }
-
-
-    /**
-     * add step in report in follwoing format<br>
-     * table header1 - table header2<br>
-     * table1 item 1  table2 item 1<br>
-     * table1 item 2  table2 item 2<br>
-     * table1 item 3  table2 item 3<br>
-     *
-     * @param table1Header
-     * @param table2Header
-     * @param table1Items
-     * @param table2Items
-     */
-    public void addTableForComparison(String table1Header, String table2Header, List table1Items, List table2Items) {
-
-        String message = "";
-
-        message = "<div class='container'>\n" +
-                "  <div class='row'>";
-
-        message = message + "    <div class='col s5'>" +
-                "  <h4>" + table1Header + "</h4>";
-
-        for (Object itemObj : table1Items) {
-            String item = itemObj.toString();
-            item = item.replaceAll("\n", "<br>");
-            if (item.matches(ReporterManager.MARKER_OF_FAILED_ITEM + ".*"))
-                item = item.replace(MARKER_OF_FAILED_ITEM, "<div style='color:red'>") + "</div>";
-            message = message + "<p>" + item.replaceAll("\n", "<br>") + "</p>";
-        }
-
-        message = message + "</div>";
-
-        message = message + "    <div class='col s2'>" +
-                "  <h4>-</h4> </div>";
-
-        message = message + "    <div class='col s5'>" +
-                "  <h4>" + table2Header + "</h4>";
-
-        for (Object itemObj : table2Items) {
-            String item = itemObj.toString();
-            item = item.replaceAll("\n", "<br>");
-            if (item.matches(ReporterManager.MARKER_OF_FAILED_ITEM + ".*"))
-                item = item.replace(MARKER_OF_FAILED_ITEM, "<div style='color:red'>") + "</div>";
-            message = message + "<p>" + item + "</p>";
-        }
-
-        message = message + "</div>";
-
-        message = message + "</div></div>";
-
-        report().log(LogStatus.INFO, message);
-    }
+//
+//    /**
+//     * add step in report in follwoing format<br>
+//     * table header1 - table header2<br>
+//     * table1 item 1  table2 item 1<br>
+//     * table1 item 2  table2 item 2<br>
+//     * table1 item 3  table2 item 3<br>
+//     *
+//     * @param table1Header
+//     * @param table2Header
+//     * @param table1Items
+//     * @param table2Items
+//     */
+//    public void addTableForComparison(String table1Header, String table2Header, List table1Items, List table2Items) {
+//
+//        String message = "";
+//
+//        message = "<div class='container'>\n" +
+//                "  <div class='row'>";
+//
+//        message = message + "    <div class='col s5'>" +
+//                "  <h4>" + table1Header + "</h4>";
+//
+//        for (Object itemObj : table1Items) {
+//            String item = itemObj.toString();
+//            item = item.replaceAll("\n", "<br>");
+//            if (item.matches(ReporterManager.MARKER_OF_FAILED_ITEM + ".*"))
+//                item = item.replace(MARKER_OF_FAILED_ITEM, "<div style='color:red'>") + "</div>";
+//            message = message + "<p>" + item.replaceAll("\n", "<br>") + "</p>";
+//        }
+//
+//        message = message + "</div>";
+//
+//        message = message + "    <div class='col s2'>" +
+//                "  <h4>-</h4> </div>";
+//
+//        message = message + "    <div class='col s5'>" +
+//                "  <h4>" + table2Header + "</h4>";
+//
+//        for (Object itemObj : table2Items) {
+//            String item = itemObj.toString();
+//            item = item.replaceAll("\n", "<br>");
+//            if (item.matches(ReporterManager.MARKER_OF_FAILED_ITEM + ".*"))
+//                item = item.replace(MARKER_OF_FAILED_ITEM, "<div style='color:red'>") + "</div>";
+//            message = message + "<p>" + item + "</p>";
+//        }
+//
+//        message = message + "</div>";
+//
+//        message = message + "</div></div>";
+//
+//        report().log(LogStatus.INFO, message);
+//    }
 
 //    //TODO under construction
 //    private String packMessage(String message) {
@@ -651,149 +651,149 @@ public class ReporterManager {
         return filename;
     }
 
-    /**
-     * Archive results
-     *
-     * @return
-     */
-    public static String archiveResultsFiles() {
-        ArrayList<String> listOfResultsFile = new ArrayList<String>();
-        listOfResultsFile.add(FileManager.OUTPUT_DIR);
-        listOfResultsFile.add(ReporterManager.REPORT_FILE_LOCATION);
-        listOfResultsFile.addAll(Arrays.asList(SessionManager.getScreenshotNamesFromSession()));
+//    /**
+//     * Archive results
+//     *
+//     * @return
+//     */
+//    public static String archiveResultsFiles() {
+//        ArrayList<String> listOfResultsFile = new ArrayList<String>();
+//        listOfResultsFile.add(FileManager.OUTPUT_DIR);
+//        listOfResultsFile.add(ReporterManager.REPORT_FILE_LOCATION);
+//        listOfResultsFile.addAll(Arrays.asList(SessionManager.getScreenshotNamesFromSession()));
+//
+//        return FileManager.archiveFiles(listOfResultsFile);
+//    }
 
-        return FileManager.archiveFiles(listOfResultsFile);
-    }
-
-    /**
-     * Add Image to results
-     *
-     * @param comment
-     * @param fileLocation
-     */
-    public void addImage(String comment, String fileLocation) {
-        String message = "<pre>" + comment + "</pre>";
-        logger.info(comment);
-
-        message = message + "<br><img style=\"max-width: 100%;height: auto;max-height: 100%;width: auto;\" src=\"" + FileManager.getFileNameFromPath(fileLocation) + "\"></img><br>";
-        report().log(LogStatus.INFO, message);
-    }
-
-    /**
-     * Add message with URL
-     *
-     * @param message
-     * @param url
-     */
-    public String infoAsURL(String message, String url) {
-        message = "<a href=\"" + url + "\"> " + message + " </a>";
-        logger.info(message);
-        report().log(LogStatus.INFO, message);
-        return message;
-    }
-
-
-    public void addCustomScriptsAndStyles() {
-        String customStyle = ".high {background: gainsboro }";
-        String customJS = "addEventListener('click', changeClass ,true);\n" +
-                "\n" +
-                "function highlighter(e){\n" +
-                "    setTimeout(changeClass, 500, e);\n" +
-                "    }\n" +
-                "function changeClass(e){\n" +
-                "    var target = e.target;\n" +
-                "if(target.getAttribute(\"class\") == 'mdi-navigation-close icon'){" +
-                "           var elements = document.getElementsByClassName(\"category text-white\")\n" +
-                "\t   for(var i =0 ; i < elements.length; i++){\n" +
-                "\t\t\telements.item(i).classList.remove('high')\n" +
-                "\t   } \n" +
-                "       }\n" +
-                "if(target.innerText == 'Clear Filters'){\n" +
-                "           var elements = document.getElementsByClassName(\"category text-white\")\n" +
-                "\t   for(var i =0 ; i < elements.length; i++){\n" +
-                "\t\t\telements.item(i).classList.remove('high')\n" +
-                "\t   } \n" +
-                "       }" +
-                " if(target.getAttribute(\"class\") == 'category text-white'){\n" +
-                "\t   var text  = target.innerText\n" +
-                "            var elements = document.getElementsByClassName(\"category text-white\")\n" +
-                "\t   for(var i =0 ; i < elements.length; i++){\n" +
-                "\t\tif(elements.item(i).innerText == text)\n" +
-                "            \t\telements.item(i).classList.add('high')\n" +
-                "\t\telse \n" +
-                "\t\t\telements.item(i).classList.remove('high')\n" +
-                "\t     } \n" +
-                "}\n" +
-                "}";
-
-        String content = FileManager.getFileContent(REPORT_FILE_LOCATION);
-        content = FileManager.replaceStringInFileContent(content, "<style>", "<style>" + customStyle);
-        content = FileManager.replaceStringInFileContent(content, "</script>", "</script><script>" + customJS + "</script>");
-        try {
-            FileManager.createFile(REPORT_FILE_LOCATION, content);
-        } catch (IOException e) {
-            logger.error("Fail add custom scripts and styles");
-        }
-
-    }
-
-    public LocalDateTime getStartTime() {
-        return START_TIME;
-    }
-
-    public Integer getPassedTestsCount() {
-        return passedTests.size();
-    }
-
-    public Integer getFailedTestsCount() {
-        return failedTests.size();
-    }
-
-    public String getListOfFailedTests() {
-        return failedTests.size() == 0 ? "" : "*Failed tests list:* \n" + ":x: " + failedTests.stream().collect(Collectors.joining("\n :x: "));
-    }
-
-    /**
-     * Calculate pass rate of the test run
-     *
-     * @param passedTests - count of passed tests
-     * @param allTests    - count of all tests
-     * @return percentage of passed tests.
-     */
-    String calculatePassRate(int passedTests, int allTests) {
-        if (passedTests == 0 | allTests == 0)
-            return "0%";
-
-        if (passedTests == allTests)
-            return "100%";
-
-        float passRate = ((float) (passedTests) / allTests) * 100;
-        return String.valueOf(passRate).replaceAll("(\\d?\\.\\d\\d).*", "$1") + "%";
-    }
-
-    String getReportUrl() {
-        if (System.getProperty("jobName") == null | System.getProperty("buildNumber") == null) {
-            logger.info("job name/build number is not specified");
-            return "";
-        }
-        String jobName = System.getProperty("jobName");
-        String buildNumber = System.getProperty("buildNumber");
-        String vmUrl = "http://104.211.9.8";
-
-        return vmUrl + "/job/" + jobName + "/" + buildNumber + "/artifact/target/report/Report.html";
-    }
-
-
-    public void processDifference(HashMap<String, String> difference) {
-        if (difference.size() == 0)
-            pass("No differences found");
-        else {
-            String message = "";
-
-            for (Map.Entry<String, String> item : difference.entrySet()) {
-                message = message + (item.getKey() + "<br>" + item.getValue()) + "<br>";
-            }
-            fail(message);
-        }
-    }
+//    /**
+//     * Add Image to results
+//     *
+//     * @param comment
+//     * @param fileLocation
+//     */
+//    public void addImage(String comment, String fileLocation) {
+//        String message = "<pre>" + comment + "</pre>";
+//        logger.info(comment);
+//
+//        message = message + "<br><img style=\"max-width: 100%;height: auto;max-height: 100%;width: auto;\" src=\"" + FileManager.getFileNameFromPath(fileLocation) + "\"></img><br>";
+//        report().log(LogStatus.INFO, message);
+//    }
+//
+//    /**
+//     * Add message with URL
+//     *
+//     * @param message
+//     * @param url
+//     */
+//    public String infoAsURL(String message, String url) {
+//        message = "<a href=\"" + url + "\"> " + message + " </a>";
+//        logger.info(message);
+//        report().log(LogStatus.INFO, message);
+//        return message;
+//    }
+//
+//
+//    public void addCustomScriptsAndStyles() {
+//        String customStyle = ".high {background: gainsboro }";
+//        String customJS = "addEventListener('click', changeClass ,true);\n" +
+//                "\n" +
+//                "function highlighter(e){\n" +
+//                "    setTimeout(changeClass, 500, e);\n" +
+//                "    }\n" +
+//                "function changeClass(e){\n" +
+//                "    var target = e.target;\n" +
+//                "if(target.getAttribute(\"class\") == 'mdi-navigation-close icon'){" +
+//                "           var elements = document.getElementsByClassName(\"category text-white\")\n" +
+//                "\t   for(var i =0 ; i < elements.length; i++){\n" +
+//                "\t\t\telements.item(i).classList.remove('high')\n" +
+//                "\t   } \n" +
+//                "       }\n" +
+//                "if(target.innerText == 'Clear Filters'){\n" +
+//                "           var elements = document.getElementsByClassName(\"category text-white\")\n" +
+//                "\t   for(var i =0 ; i < elements.length; i++){\n" +
+//                "\t\t\telements.item(i).classList.remove('high')\n" +
+//                "\t   } \n" +
+//                "       }" +
+//                " if(target.getAttribute(\"class\") == 'category text-white'){\n" +
+//                "\t   var text  = target.innerText\n" +
+//                "            var elements = document.getElementsByClassName(\"category text-white\")\n" +
+//                "\t   for(var i =0 ; i < elements.length; i++){\n" +
+//                "\t\tif(elements.item(i).innerText == text)\n" +
+//                "            \t\telements.item(i).classList.add('high')\n" +
+//                "\t\telse \n" +
+//                "\t\t\telements.item(i).classList.remove('high')\n" +
+//                "\t     } \n" +
+//                "}\n" +
+//                "}";
+//
+//        String content = FileManager.getFileContent(REPORT_FILE_LOCATION);
+//        content = FileManager.replaceStringInFileContent(content, "<style>", "<style>" + customStyle);
+//        content = FileManager.replaceStringInFileContent(content, "</script>", "</script><script>" + customJS + "</script>");
+//        try {
+//            FileManager.createFile(REPORT_FILE_LOCATION, content);
+//        } catch (IOException e) {
+//            logger.error("Fail add custom scripts and styles");
+//        }
+//
+//    }
+//
+//    public LocalDateTime getStartTime() {
+//        return START_TIME;
+//    }
+//
+//    public Integer getPassedTestsCount() {
+//        return passedTests.size();
+//    }
+//
+//    public Integer getFailedTestsCount() {
+//        return failedTests.size();
+//    }
+//
+//    public String getListOfFailedTests() {
+//        return failedTests.size() == 0 ? "" : "*Failed tests list:* \n" + ":x: " + failedTests.stream().collect(Collectors.joining("\n :x: "));
+//    }
+//
+//    /**
+//     * Calculate pass rate of the test run
+//     *
+//     * @param passedTests - count of passed tests
+//     * @param allTests    - count of all tests
+//     * @return percentage of passed tests.
+//     */
+//    String calculatePassRate(int passedTests, int allTests) {
+//        if (passedTests == 0 | allTests == 0)
+//            return "0%";
+//
+//        if (passedTests == allTests)
+//            return "100%";
+//
+//        float passRate = ((float) (passedTests) / allTests) * 100;
+//        return String.valueOf(passRate).replaceAll("(\\d?\\.\\d\\d).*", "$1") + "%";
+//    }
+//
+//    String getReportUrl() {
+//        if (System.getProperty("jobName") == null | System.getProperty("buildNumber") == null) {
+//            logger.info("job name/build number is not specified");
+//            return "";
+//        }
+//        String jobName = System.getProperty("jobName");
+//        String buildNumber = System.getProperty("buildNumber");
+//        String vmUrl = "http://104.211.9.8";
+//
+//        return vmUrl + "/job/" + jobName + "/" + buildNumber + "/artifact/target/report/Report.html";
+//    }
+//
+//
+//    public void processDifference(HashMap<String, String> difference) {
+//        if (difference.size() == 0)
+//            pass("No differences found");
+//        else {
+//            String message = "";
+//
+//            for (Map.Entry<String, String> item : difference.entrySet()) {
+//                message = message + (item.getKey() + "<br>" + item.getValue()) + "<br>";
+//            }
+//            fail(message);
+//        }
+//    }
 }
