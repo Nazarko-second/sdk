@@ -79,7 +79,7 @@ public class BaseTest {
 //        if (Q_TEST_INTEGRATION && !skipQTest.get()) {
 //            createTestRun(method);
 //        }
-        logger.info("End of @BeforeMethod: {}", reporter.getFullClassName(method));
+        logger.info("End of @BeforeMethod");
     }
 
     @AfterMethod(alwaysRun = true)
