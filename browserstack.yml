@@ -6,6 +6,8 @@
 userName: ${BROWSERSTACK_USER}
 accessKey: ${BROWSERSTACK_KEY}
 
+#logLevel: debug
+
 # ======================
 # BrowserStack Reporting
 # ======================
