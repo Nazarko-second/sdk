@@ -44,8 +44,8 @@ public class FileManager {
      * @return test output dir
      */
     public static String getOutputDir() {
-//        String callingMethod = new Throwable().getStackTrace()[2].getMethodName();
-//        LOGGER.info("getOutputDir() was called by: " + callingMethod);
+        String callingMethod = new Throwable().getStackTrace()[2].getMethodName();
+        LOGGER.info("getOutputDir() was called by: " + callingMethod);
         String directory = System.getProperty("user.dir") + File.separator + "target" + File.separator + (ProjectConfiguration.isPropertySet("Jenkins") ? "report" : SessionManager.getSessionID());
         System.setProperty("OUTPUT_DIR", directory);
         //create output dir
